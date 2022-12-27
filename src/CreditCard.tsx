@@ -117,6 +117,7 @@ interface CreditCardProps {
   placeholderTextColor?: string;
   errorTextColor?: string;
   onValidStateChange?: (cardDataIsValid: boolean) => void;
+  autoFocusNumber?: boolean;
 }
 
 export interface SubmitResponse {
@@ -144,6 +145,7 @@ const CreditCard = React.forwardRef<CreditCardType, CreditCardProps>(
       expirationDateFormat,
       onValidStateChange,
       readOnly,
+      autoFocusNumber,
     }: any,
     ref
   ) => {
@@ -398,7 +400,7 @@ const CreditCard = React.forwardRef<CreditCardType, CreditCardProps>(
                 onChange={handleInputChange}
                 editable={!readOnly?.number}
                 value={cardData?.number}
-                autoFocus
+                autoFocus={autoFocusNumber}
                 placeholder={placeholders.number}
                 style={[
                   styles.textCardNumber,
